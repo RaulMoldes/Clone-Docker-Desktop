@@ -4,7 +4,8 @@ import Sidebar from './components/Sidebar';
 import Dashboard from './pages/Dashboard';
 import Images from './pages/Images';
 import Containers from './pages/Containers';  // Importamos la página Containers
-import Volumes from './pages/Volumes';  // Importamos la página Volumes
+import Volumes from './pages/Volumes'; 
+import CreateContainer from './pages/CreateContainer';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/images" element={<Images />} />
             <Route path="/containers" element={<Containers />} />  {/* Ruta para /containers */}
             <Route path="/volumes" element={<Volumes />} />  {/* Ruta para /volumes */}
+            <Route path= "/containers/create" element={<CreateContainer/>} />
           </Routes>
         </div>
       </div>

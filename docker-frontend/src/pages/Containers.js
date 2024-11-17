@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import ContainerList from '../components/ContainerList';
 import { Button, CircularProgress } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 function Containers() {
   const [containers, setContainers] = useState([]);
   const [loading, setLoading] = useState(true);
+  // Crea la función navigate
+  const navigate = useNavigate();
 
   // Obtener los contenedores desde la API
   useEffect(() => {
@@ -22,7 +25,7 @@ function Containers() {
 
   const handleCreateContainer = () => {
     // Aquí puedes agregar un formulario o lógica para crear un contenedor
-    console.log('Crear contenedor');
+    navigate('/containers/create');
   };
 
   if (loading) {
