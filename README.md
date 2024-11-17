@@ -1,2 +1,2 @@
-# Clone-Docker-Desktop
+# DockerDesk
 Docker desktop clone with Python and React.js
