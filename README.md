@@ -29,36 +29,26 @@ DockerDesk es un clon de Docker Desktop desarrollado con Python para el backend 
 
 ### 1. Clonando el repositorio
 
-bash`
-Copiar código
-git clone https://github.com/RaulMoldes/docker-desk.git`
-cd docker-desk
+`git clone https://github.com/RaulMoldes/docker-desk.git`
+`cd docker-desk`
 
 ### 2. Instalación del Backend (Python)
 
 Navega al directorio del backend:
-
-bash`
-Copiar código
-cd backend`
+`cd backend`
 
 Crea un entorno virtual para instalar las dependencias de Python:
 
-bash`
-Copiar código
-python -m venv venv
-source venv/bin/activate  # En Windows usa 'venv\Scripts\activate'`
+`python -m venv venv`
+`source venv/bin/activate  # En Windows usa 'venv\Scripts\activate'`
 
 Instala las dependencias necesarias:
 
-bash`
-Copiar código
-pip install -r requirements.txt`
+`pip install -r requirements.txt`
+
 Inicia el servidor backend:
 
-bash`
-Copiar código
-uvicorn main:app --reload`
+`uvicorn main:app --reload`
 
 El servidor backend debería estar corriendo en http://127.0.0.1:8000.
 
@@ -66,21 +56,15 @@ El servidor backend debería estar corriendo en http://127.0.0.1:8000.
 
 Navega al directorio del frontend:
 
-bash`
-Copiar código
-cd frontend`
+`cd frontend`
 
 Instala las dependencias de Node.js:
 
-bash`
-Copiar código
-npm install`
+`npm install`
 
 Inicia el servidor de desarrollo de React:
 
-bash`
-Copiar código
-npm start`
+`npm start`
 
 El frontend debería estar corriendo en http://localhost:3000.
 
