@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button } from '@mui/material';
 import ContainerModel from '../models/ContainerModel';  // Asegúrate de importar el modelo
+import { useNavigate } from 'react-router-dom';
 
 function ContainerList({ containers }) {
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   // Function to start a container - recibe el objeto completo del contenedor
   const startContainer = async (container) => {
@@ -20,7 +22,6 @@ function ContainerList({ containers }) {
       });
 
       if (response.ok) {
-        alert('Container started successfully!');
         window.location.reload();
       } else {
         const errorData = await response.json();
@@ -46,7 +47,7 @@ function ContainerList({ containers }) {
       });
 
       if (response.ok) {
-        alert('Container stopped successfully!');
+    
         window.location.reload();
       } else {
         const errorData = await response.json();
@@ -72,7 +73,7 @@ function ContainerList({ containers }) {
       });
 
       if (response.ok) {
-        alert('Container deleted successfully!');
+
         window.location.reload();
       } else {
         const errorData = await response.json();
@@ -82,7 +83,10 @@ function ContainerList({ containers }) {
       setError('Error connecting to the server.');
     }
   };
-
+  // Función para inspeccionar y redireccionar a la página de detalles del contenedor
+  const inspectContainer = (container) => {
+    navigate(`/containers/details/${container.name}`);
+  };
   return (
     <TableContainer component={Paper}>
       <Table>
@@ -101,34 +105,86 @@ function ContainerList({ containers }) {
 
             return (
               <TableRow key={formattedContainer.name}>  {/* Usamos 'name' como clave única */}
-                <TableCell>{formattedContainer.name}</TableCell>
-                <TableCell>{formattedContainer.status}</TableCell>
+                <TableCell style = {{maxWidth: '200px',overflow: 'hidden', textOverflow: 'ellipsis' }}>{formattedContainer.name}</TableCell>
+                <TableCell style = {{maxWidth: '200px',overflow: 'hidden', textOverflow: 'ellipsis' }}>{formattedContainer.status}</TableCell>
                 <TableCell>{formattedContainer.image}</TableCell>
                 <TableCell>
                   {/* Action Buttons for Start, Stop, and Delete */}
                   <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() => startContainer(formattedContainer)} // Pasar el objeto completo
-                    disabled={formattedContainer.status === 'running'}  // Disable if already running
-                  >
-                    Start
-                  </Button>
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    onClick={() => stopContainer(formattedContainer)}  // Pasar el objeto completo
-                    disabled={formattedContainer.status === 'stopped' || formattedContainer.status === 'exited'}  // Disable if already stopped
-                  >
-                    Stop
-                  </Button>
-                  <Button
-                    variant="contained"
-                    color="error"
-                    onClick={() => deleteContainer(formattedContainer)}  // Pasar el objeto completo
-                  >
-                    Delete
-                  </Button>
+  variant="contained"
+  onClick={() => startContainer(formattedContainer)}
+  disabled={formattedContainer.status === 'running'}
+  sx={{ 
+    backgroundColor: '#90caf9', // Azul tenue
+    color: 'black',
+    fontSize: '0.75rem', // Fuente más pequeña
+    padding: '4px 8px', // Reducir padding
+    marginRight: '5px', // Espacio entre botones
+    minWidth: 'unset', // Quitar el ancho mínimo
+    boxShadow: 'none', // Quitar la sombra
+    '&:hover': {
+      backgroundColor: '#64b5f6', // Un poco más oscuro al hacer hover
+    }
+  }}
+>
+  Start
+</Button>
+<Button
+  variant="contained"
+  onClick={() => stopContainer(formattedContainer)}
+  disabled={formattedContainer.status === 'stopped' || formattedContainer.status === 'exited'}
+  sx={{ 
+    backgroundColor: '#90caf9',
+    color: 'black',
+    fontSize: '0.75rem',
+    padding: '4px 8px',
+    marginRight: '5px',
+    minWidth: 'unset',
+    boxShadow: 'none',
+    '&:hover': {
+      backgroundColor: '#64b5f6',
+    }
+  }}
+>
+  Stop
+</Button>
+<Button
+  variant="contained"
+  onClick={() => deleteContainer(formattedContainer)}
+  sx={{ 
+    backgroundColor: '#90caf9',
+    color: 'black',
+    fontSize: '0.75rem',
+    padding: '4px 8px',
+    marginRight: '5px',
+    minWidth: 'unset',
+    boxShadow: 'none',
+    '&:hover': {
+      backgroundColor: '#64b5f6',
+    }
+  }}
+>
+  Delete
+</Button>
+<Button
+  variant="contained"
+  onClick={() => inspectContainer(formattedContainer)}
+  sx={{ 
+    backgroundColor: '#90caf9',
+    color: 'black',
+    fontSize: '0.75rem',
+    padding: '4px 8px',
+    marginRight: '5px',
+    minWidth: 'unset',
+    boxShadow: 'none',
+    '&:hover': {
+      backgroundColor: '#64b5f6',
+    }
+  }}
+>
+   Inspect
+</Button>
+
                 </TableCell>
               </TableRow>
             );

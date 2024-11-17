@@ -20,7 +20,7 @@ function ImageList({ images }) {
       });
 
       if (response.ok) {
-        alert('Image deleted successfully!');
+        //alert('Image deleted successfully!');
         window.location.reload();  // Recargar la página después de borrar la imagen
       } else {
         const errorData = await response.json();
@@ -58,22 +58,44 @@ const startContainerFromImage = async (imageName) => {
         <TableBody>
           {images.map((image) => (
             <TableRow key={image.id}>
-              <TableCell>{image.name}</TableCell>
-              <TableCell>{image.tag}</TableCell>
-              <TableCell>{image.size}</TableCell>
+              <TableCell style = {{maxWidth: '200px',overflow: 'hidden', textOverflow: 'ellipsis' }}>{image.name}</TableCell>
+              <TableCell style = {{maxWidth: '200px',overflow: 'hidden', textOverflow: 'ellipsis' }}>{image.tag}</TableCell>
+              <TableCell style = {{maxWidth: '200px',overflow: 'hidden', textOverflow: 'ellipsis' }}>{image.size}</TableCell>
               <TableCell>
                 {/* Buttons for delete and start container */}
                 <Button
                   variant="contained"
-                  color="error"
-                  onClick={() => deleteImage(image)}  // Borrar imagen
+                  onClick={() => deleteImage(image)}
+                  sx={{ 
+                    backgroundColor: '#90caf9', // Azul tenue
+                    color: 'black',
+                    fontSize: '0.75rem', // Fuente más pequeña
+                    padding: '4px 8px', // Reducir padding
+                    marginRight: '5px', // Espacio entre botones
+                    minWidth: 'unset', // Quitar el ancho mínimo
+                    boxShadow: 'none', // Quitar la sombra
+                    '&:hover': {
+                      backgroundColor: '#64b5f6', // Un poco más oscuro al hacer hover
+                    }
+                  }}  // Borrar imagen
                 >
                   Delete Image
                 </Button>
                 <Button
                   variant="contained"
-                  color="primary"
-                  onClick={() => startContainerFromImage(image.name)}  // Arrancar contenedor con imagen
+                  onClick={() => startContainerFromImage(image.name)}
+                  sx={{ 
+                    backgroundColor: '#90caf9', // Azul tenue
+                    color: 'black',
+                    fontSize: '0.75rem', // Fuente más pequeña
+                    padding: '4px 8px', // Reducir padding
+                    marginRight: '5px', // Espacio entre botones
+                    minWidth: 'unset', // Quitar el ancho mínimo
+                    boxShadow: 'none', // Quitar la sombra
+                    '&:hover': {
+                      backgroundColor: '#64b5f6', // Un poco más oscuro al hacer hover
+                    }
+                  }}  // Arrancar contenedor con imagen
                 >
                   Start Container
                 </Button>
