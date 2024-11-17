@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import VolumeList from '../components/VolumeList';
 import { Button, CircularProgress } from '@mui/material';
+import {useNavigate} from 'react-router-dom';
 
 function Volumes() {
   const [volumes, setVolumes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   // Obtener los volúmenes desde la API
   useEffect(() => {
     fetch('http://127.0.0.1:8000/volumes/')
       .then((response) => response.json())
-      .then((data) => {
-        setVolumes(data);
+      .then((content) => {
+        setVolumes(content);
         setLoading(false);
       })
       .catch((error) => {
@@ -22,7 +24,7 @@ function Volumes() {
 
   const handleCreateVolume = () => {
     // Aquí puedes agregar un formulario o lógica para crear un volumen
-    console.log('Crear volumen');
+    navigate("/volumes/create")
   };
 
   if (loading) {

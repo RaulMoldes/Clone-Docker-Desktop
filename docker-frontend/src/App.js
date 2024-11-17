@@ -8,6 +8,8 @@ import Volumes from './pages/Volumes';
 import CreateContainer from './pages/CreateContainer';
 import ContainerDetails from './pages/ContainerDetails';
 import CreateImage from './pages/CreateImage';
+import CreateVolume from './pages/CreateVolume';
+import VolumeDetails from './pages/VolumeDetails';
 
 function App() {
   return (
@@ -22,7 +24,9 @@ function App() {
             <Route path="/volumes" element={<Volumes />} />  {/* Ruta para /volumes */}
             <Route path= "/containers/create" element={<CreateContainer/>} />
             <Route path="/containers/details/:containerName" element={<ContainerDetails />} />
+            <Route path="/volumes/details/:volumeName" element={<VolumeDetails />} />
             <Route path="/images/create" element={<CreateImage />} />
+            <Route path="/volumes/create" element={<CreateVolume />} />
           </Routes>
         </div>
       </div>

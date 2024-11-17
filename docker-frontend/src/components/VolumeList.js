@@ -1,16 +1,20 @@
 import React, {useState} from 'react';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button } from '@mui/material';
 import VolumeModel from '../models/VolumeModel';
-
+import {useNavigate} from 'react-router-dom';
 
 // Este componente recibe las imágenes como prop y las muestra en una tabla
 function VolumeList({ volumes }) {
     const [error, setError] = useState(null);
+    const navigate = useNavigate()
     // Comprobar si volumes es un array antes de intentar mapearlo
     if (!Array.isArray(volumes)) {
       return <div>No volumes available</div>;  // Si volumes no es un array, muestra un mensaje adecuado
     }
-
+  // Función para inspeccionar y redireccionar a la página de detalles del contenedor
+  const inspectVolume = (volume) => {
+    navigate(`/volumes/details/${volume.name}`);
+  };
     // Function to delete a volume
   const deleteVolume = async (volume) => {
     try {
@@ -54,6 +58,24 @@ function VolumeList({ volumes }) {
                 <TableCell style = {{maxWidth: '200px',overflow: 'hidden', textOverflow: 'ellipsis' }}>{volume.driver}</TableCell>
                 <TableCell style = {{maxWidth: '200px',overflow: 'hidden', textOverflow: 'ellipsis' }}>{volume.mountpoint}</TableCell>
                 {/* Action Buttons for Start, Stop, and Delete */}
+                <Button
+                    variant="contained"
+                    onClick={() => inspectVolume(volume)}
+                    sx={{ 
+                      backgroundColor: '#90caf9', // Azul tenue
+                      color: 'black',
+                      fontSize: '0.75rem', // Fuente más pequeña
+                      padding: '4px 8px', // Reducir padding
+                      marginRight: '5px', // Espacio entre botones
+                      minWidth: 'unset', // Quitar el ancho mínimo
+                      boxShadow: 'none', // Quitar la sombra
+                      '&:hover': {
+                        backgroundColor: '#64b5f6', // Un poco más oscuro al hacer hover
+                      }
+                    }} // Pasar el objeto completo
+                  >
+                    Inspect
+                  </Button>
                 <Button
                     variant="contained"
                     onClick={() => deleteVolume(volume)}

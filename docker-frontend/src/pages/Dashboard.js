@@ -22,7 +22,7 @@ function Dashboard() {
     fetch('http://127.0.0.1:8000/images/')
       .then((response) => response.json())
       .then((data) => {
-        setImagesCount(data.length);  // Número de imágenes
+        setImagesCount(data.images.length);  // Número de imágenes
       })
       .catch((error) => console.error('Error fetching images:', error));
 
