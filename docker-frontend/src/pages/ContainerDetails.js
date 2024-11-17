@@ -38,7 +38,16 @@ const ContainerDetails = () => {
       // Si es un objeto, mostrarlo como pares clave-valor
       return Object.keys(value).map((key) => (
         <div key={key}>
-          <strong>{key}:</strong> {value[key] ? value[key] : 'Vacío'}
+          <strong>{key}:</strong> {value[key] ? formatValue(value[key]) : 'Vacío'}
+        </div>
+      ));
+    }
+
+    if (Array.isArray(value)) {
+      // Si es un array, mostrar los elementos
+      return value.map((item, index) => (
+        <div key={index}>
+          {formatValue(item)}
         </div>
       ));
     }
@@ -69,3 +78,4 @@ const ContainerDetails = () => {
 };
 
 export default ContainerDetails;
+

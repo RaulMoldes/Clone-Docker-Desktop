@@ -1,28 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import ImageList from '../components/ImageList';
 import { Button, CircularProgress } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 function Images() {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const navigate = useNavigate();
   // Obtener las imágenes desde la API
   useEffect(() => {
+    // Start loading
+    setLoading(true);
+  
     fetch('http://127.0.0.1:8000/images/')
       .then((response) => response.json())
-      .then((data) => {
-        setImages(data);
-        setLoading(false);
+      .then((content) => {
+        // Assuming 'image_info' is the correct field returned from the server
+        setImages(content.images);
       })
       .catch((error) => {
         console.error('Error fetching images:', error);
+      })
+      .finally(() => {
+        // Ensure loading state is set to false after the fetch finishes
         setLoading(false);
       });
   }, []);
+  
 
   const handleCreateImage = () => {
     // Aquí puedes agregar un formulario o lógica para crear una imagen
-    console.log('Crear imagen');
+    navigate("/images/create")
   };
 
   if (loading) {

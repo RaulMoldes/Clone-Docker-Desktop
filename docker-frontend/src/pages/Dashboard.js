@@ -47,20 +47,6 @@ function Dashboard() {
     );
   }
 
-  const handleCreateContainer = () => {
-    // Aquí podrías integrar un formulario o lógica para crear un contenedor
-    console.log('Crear contenedor');
-  };
-
-  const handleCreateImage = () => {
-    // Aquí podrías integrar un formulario o lógica para crear una imagen
-    console.log('Crear imagen');
-  };
-
-  const handleCreateVolume = () => {
-    // Aquí podrías integrar un formulario o lógica para crear un volumen
-    console.log('Crear volumen');
-  };
 
   return (
     <div>
@@ -76,11 +62,7 @@ function Dashboard() {
               <Typography variant="h6">Containers</Typography>
               <Typography variant="h4">{containersCount}</Typography>
               <Link to="/containers">See Details</Link>
-              <div style={{ marginTop: '20px' }}>
-                <Button variant="contained" color="primary" onClick={handleCreateContainer}>
-                  Create Container
-                </Button>
-              </div>
+             
             </CardContent>
           </Card>
         </Grid>
@@ -92,11 +74,7 @@ function Dashboard() {
               <Typography variant="h6">Images</Typography>
               <Typography variant="h4">{imagesCount}</Typography>
               <Link to="/images">See Details</Link>
-              <div style={{ marginTop: '20px' }}>
-                <Button variant="contained" color="primary" onClick={handleCreateImage}>
-                  Create Image
-                </Button>
-              </div>
+            
             </CardContent>
           </Card>
         </Grid>
@@ -108,11 +86,7 @@ function Dashboard() {
               <Typography variant="h6">Volumes</Typography>
               <Typography variant="h4">{volumesCount}</Typography>
               <Link to="/volumes">See Details</Link>
-              <div style={{ marginTop: '20px' }}>
-                <Button variant="contained" color="primary" onClick={handleCreateVolume}>
-                  Create Volume
-                </Button>
-              </div>
+           
             </CardContent>
           </Card>
         </Grid>
