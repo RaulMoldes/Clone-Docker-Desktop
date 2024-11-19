@@ -23,10 +23,6 @@ DockerDesk es un clon de Docker Desktop desarrollado con Python para el backend 
 
 - Docker: Asegúrate de tener Docker instalado y ejecutándose en tu máquina. Puedes instalar Docker desde aquí.
 
-- Python: Necesitarás Python 3.8+ para ejecutar el backend. Si no lo tienes, instálalo desde aquí.
-
-- Node.js: Necesitarás Node.js y npm para ejecutar el frontend. Instálalo desde aquí.
-
 ### 1. Clonando el repositorio
 
 `git clone https://github.com/RaulMoldes/docker-desk.git`
