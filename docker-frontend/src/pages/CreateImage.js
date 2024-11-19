@@ -15,7 +15,7 @@ function CreateImage() {
   // Crear la imagen con docker pull
   const handlePullImage = async () => {
     try {
-      const response = await fetch(`http://127.0.0.1:8000/images/pull/${imageName}`, {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/images/pull/${imageName}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
       });
@@ -34,7 +34,7 @@ function CreateImage() {
   // Construir la imagen desde un Dockerfile
   const handleBuildImage = async () => {
     try {
-      const response = await fetch(`http://127.0.0.1:8000/images/build`, {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/images/build`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ dockerfilePath, imageName }),

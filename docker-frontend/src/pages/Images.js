@@ -12,7 +12,7 @@ function Images() {
     // Start loading
     setLoading(true);
   
-    fetch('http://127.0.0.1:8000/images/')
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/images/`)
       .then((response) => response.json())
       .then((content) => {
         // Assuming 'image_info' is the correct field returned from the server

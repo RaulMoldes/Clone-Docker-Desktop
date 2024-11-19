@@ -10,7 +10,7 @@ function Volumes() {
 
   // Obtener los volúmenes desde la API
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/volumes/')
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/volumes/`)
       .then((response) => response.json())
       .then((content) => {
         setVolumes(content);

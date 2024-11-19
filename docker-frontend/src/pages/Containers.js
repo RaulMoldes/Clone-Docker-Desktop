@@ -11,7 +11,7 @@ function Containers() {
 
   // Obtener los contenedores desde la API
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/containers/')
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/containers/`)
       .then((response) => response.json())
       .then((data) => {
         setContainers(data);

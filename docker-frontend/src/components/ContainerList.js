@@ -13,7 +13,7 @@ function ContainerList({ containers }) {
       // Asegurarse de que el contenedor está en el formato correcto según el modelo
       const containerData = new ContainerModel(container);
 
-      const response = await fetch('http://127.0.0.1:8000/containers/start', {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/containers/start`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ function ContainerList({ containers }) {
       // Asegurarse de que el contenedor está en el formato correcto según el modelo
       const containerData = new ContainerModel(container);
 
-      const response = await fetch('http://127.0.0.1:8000/containers/stop', {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/containers/stop`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -64,7 +64,7 @@ function ContainerList({ containers }) {
       // Asegurarse de que el contenedor está en el formato correcto según el modelo
       const containerData = new ContainerModel(container);
 
-      const response = await fetch('http://127.0.0.1:8000/containers/delete', {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/containers/delete`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

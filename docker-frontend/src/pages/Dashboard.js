@@ -11,7 +11,7 @@ function Dashboard() {
   // Hacer las llamadas a las APIs cuando el componente se monta
   useEffect(() => {
     // Llamada a la API de contenedores
-    fetch('http://127.0.0.1:8000/containers/')
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/containers/`)
       .then((response) => response.json())
       .then((data) => {
         setContainersCount(data.length);  // Número de contenedores
@@ -19,7 +19,7 @@ function Dashboard() {
       .catch((error) => console.error('Error fetching containers:', error));
 
     // Llamada a la API de imágenes
-    fetch('http://127.0.0.1:8000/images/')
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/images/`)
       .then((response) => response.json())
       .then((data) => {
         setImagesCount(data.images.length);  // Número de imágenes
@@ -27,7 +27,7 @@ function Dashboard() {
       .catch((error) => console.error('Error fetching images:', error));
 
     // Llamada a la API de volúmenes
-    fetch('http://127.0.0.1:8000/volumes/')
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/volumes`)
       .then((response) => response.json())
       .then((data) => {
         setVolumesCount(data.length);  // Número de volúmenes

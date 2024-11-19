@@ -10,7 +10,7 @@ const VolumeDetails = () => {
   useEffect(() => {
     const fetchVolumeData = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/volumes/details/${volumeName}`);
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/volumes/details/${volumeName}`);
         const data = await response.json();
         console.log(data);
         if (data) {

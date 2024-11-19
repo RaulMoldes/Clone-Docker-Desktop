@@ -10,7 +10,7 @@ const ContainerDetails = () => {
   useEffect(() => {
     const fetchContainerData = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/containers/details/${containerName}`);
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/containers/details/${containerName}`);
         const data = await response.json();
         
         if (data.details) {

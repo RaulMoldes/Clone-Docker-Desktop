@@ -21,7 +21,7 @@ function VolumeList({ volumes }) {
       // Asegurarse de que el contenedor está en el formato correcto según el modelo
       const volumeData = new VolumeModel(volume);
 
-      const response = await fetch('http://127.0.0.1:8000/volumes/delete', {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/volumes/delete`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

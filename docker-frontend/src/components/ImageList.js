@@ -11,7 +11,7 @@ function ImageList({ images }) {
       // Crear una instancia de ImageModel para la imagen a eliminar
       const imageModel = new ImageModel(image);
       console.log(ImageModel)
-      const response = await fetch(`http://127.0.0.1:8000/images/delete`, {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/images/delete`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
